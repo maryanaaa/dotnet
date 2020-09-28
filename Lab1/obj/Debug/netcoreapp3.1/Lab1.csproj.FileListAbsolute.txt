@@ -1,0 +1,15 @@
+D:\uni\7th term\.NET\Lab1\obj\Debug\netcoreapp3.1\Lab1.csprojAssemblyReference.cache
+D:\uni\7th term\.NET\Lab1\obj\Debug\netcoreapp3.1\Lab1.AssemblyInfoInputs.cache
+D:\uni\7th term\.NET\Lab1\obj\Debug\netcoreapp3.1\Lab1.AssemblyInfo.cs
+D:\uni\7th term\.NET\Lab1\obj\Debug\netcoreapp3.1\Lab1.csproj.CoreCompileInputs.cache
+D:\uni\7th term\.NET\Lab1\bin\Debug\netcoreapp3.1\Lab1.exe
+D:\uni\7th term\.NET\Lab1\bin\Debug\netcoreapp3.1\Lab1.deps.json
+D:\uni\7th term\.NET\Lab1\bin\Debug\netcoreapp3.1\Lab1.runtimeconfig.json
+D:\uni\7th term\.NET\Lab1\bin\Debug\netcoreapp3.1\Lab1.runtimeconfig.dev.json
+D:\uni\7th term\.NET\Lab1\bin\Debug\netcoreapp3.1\Lab1.dll
+D:\uni\7th term\.NET\Lab1\bin\Debug\netcoreapp3.1\Lab1.pdb
+D:\uni\7th term\.NET\Lab1\bin\Debug\netcoreapp3.1\Npgsql.dll
+D:\uni\7th term\.NET\Lab1\obj\Debug\netcoreapp3.1\Lab1.csproj.CopyComplete
+D:\uni\7th term\.NET\Lab1\obj\Debug\netcoreapp3.1\Lab1.dll
+D:\uni\7th term\.NET\Lab1\obj\Debug\netcoreapp3.1\Lab1.pdb
+D:\uni\7th term\.NET\Lab1\obj\Debug\netcoreapp3.1\Lab1.genruntimeconfig.cache
