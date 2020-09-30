@@ -21,10 +21,10 @@ namespace Lab1
                     {
                         while (reader.Read())
                         {
-                            int n_fields = reader.FieldCount;
-                            var fields = new object[n_fields];
+                            int nFields = reader.FieldCount;
+                            var fields = new object[nFields];
 
-                            for (int i = 0; i < n_fields; ++i)
+                            for (int i = 0; i < nFields; ++i)
                             {
                                 fields[i] = reader.GetValue(i);
                             }
