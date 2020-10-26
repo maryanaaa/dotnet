@@ -1,8 +1,10 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using Lab2.Data;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace Lab2
 {
@@ -13,19 +15,20 @@ namespace Lab2
             var db = new TravelAgencyContext();
 
 
-            var customers = 
-                from c in db.Customers
-                select new
-                {
-                    c,
-                    ToursCount = (from tr in db.Trips where tr.CustomerID == c.ID select tr).Count()
-                };
+            var customers = db.Customers
+                .Join(db.Trips, customers => customers.ID, trips => trips.CustomerID,
+                (c, tr) => new { c })
+                .ToList()
+                .GroupBy(table => new { table.c })
+                .OrderBy(customer => customer.Key.c.ID)
+                .Select(customerTrips => new { customerTrips.Key.c, ToursCount = customerTrips.Count() });
 
             using (var file = File.CreateText("D:\\uni\\7th term\\.NET\\Lab2\\customers.csv"))
             {
                 file.WriteLine("ID, Прізвище, Ім'я, По-батькові, Номер телефону, Адреса, К-сть замовлених турів");
                 foreach (var customer in customers)
                 {
+                    
                     file.WriteLine($"{customer.c}, {customer.ToursCount}");
                 }
             }
