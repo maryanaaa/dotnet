@@ -1,10 +1,6 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.ComTypes;
-using System.Text;
 using Lab2.Data;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace Lab2
 {
@@ -28,7 +24,6 @@ namespace Lab2
                 file.WriteLine("ID, Прізвище, Ім'я, По-батькові, Номер телефону, Адреса, К-сть замовлених турів");
                 foreach (var customer in customers)
                 {
-                    
                     file.WriteLine($"{customer.c}, {customer.ToursCount}");
                 }
             }
