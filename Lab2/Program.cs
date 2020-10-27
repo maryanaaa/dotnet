@@ -13,18 +13,19 @@ namespace Lab2
 
             var customers = db.Customers
                 .Join(db.Trips, customers => customers.ID, trips => trips.CustomerID,
-                (c, tr) => new { c })
-                .ToList()
-                .GroupBy(table => new { table.c })
-                .OrderBy(customer => customer.Key.c.ID)
-                .Select(customerTrips => new { customerTrips.Key.c, ToursCount = customerTrips.Count() });
+                (c, tr) => new { c.ID, c.LastName, c.FirstName, c.Surname, c.PhoneNumber, c.Address })
+                .GroupBy(table => new { table.ID, table.LastName, table.FirstName, table.Surname, table.PhoneNumber, table.Address })
+                .OrderBy(customer => customer.Key.ID)
+                .Select(customerTrips => new { customerTrips.Key, ToursCount = customerTrips.Count() })
+                .ToList();
 
             using (var file = File.CreateText("D:\\uni\\7th term\\.NET\\Lab2\\customers.csv"))
             {
                 file.WriteLine("ID, Прізвище, Ім'я, По-батькові, Номер телефону, Адреса, К-сть замовлених турів");
                 foreach (var customer in customers)
                 {
-                    file.WriteLine($"{customer.c}, {customer.ToursCount}");
+                    file.WriteLine($"{customer.Key.ID}, {customer.Key.LastName}, {customer.Key.FirstName}, {customer.Key.Surname}, " +
+                        $"{customer.Key.PhoneNumber}, {customer.Key.Address}, {customer.ToursCount}");
                 }
             }
 
