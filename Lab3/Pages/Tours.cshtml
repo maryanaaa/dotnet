@@ -1,0 +1,45 @@
+﻿@page
+@model Lab3.Pages.ToursModel
+
+@{
+    ViewData["Title"] = "Тури";
+}
+
+<h1>Тури</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Назва
+            </th>
+            <th>
+                Тривалість (днів)
+            </th>
+            <th>
+                Ціна (грн.)
+            </th>
+            <th>
+                Опис
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Tour) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Duration)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

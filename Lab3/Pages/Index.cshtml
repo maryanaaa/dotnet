@@ -1,0 +1,56 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+    
+    var customers = Model.DbContext.Customers
+        .Join(Model.DbContext.Trips, customers => customers.ID, trips => trips.CustomerID,
+            (c, tr) => new { c.ID, c.LastName, c.FirstName, c.Surname, c.PhoneNumber, c.Address })
+        .GroupBy(table => new { table.ID, table.LastName, table.FirstName, table.Surname, table.PhoneNumber, table.Address })
+        .OrderBy(customer => customer.Key.ID)
+        .Select(customerTrips => new { customerTrips.Key, ToursCount = customerTrips.Count() })
+        .ToList();
+}
+
+<div>
+    <h2 class="text-center">Інформація про користувачів та кількість замовлених ними турів</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Клієнт
+                </th>
+                <th>
+                    Номер телефону
+                </th>
+                <th>
+                    Адреса
+                </th>
+                <th>
+                    К-сть замовлених турів
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in customers)
+    {
+        var fullName = item.Key.LastName + " " + item.Key.FirstName + " " + item.Key.Surname;
+        
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => fullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Key.PhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Key.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ToursCount)
+            </td>
+        </tr>
+    }
+        </tbody>
+    </table>
+</div>
