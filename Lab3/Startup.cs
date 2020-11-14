@@ -13,6 +13,14 @@ using Microsoft.Extensions.Hosting;
 
 namespace Lab3
 {
+    public static class GlobalCustomMiddleware
+    {
+        public static void UseGlobalCustomMiddleware(this IApplicationBuilder app)
+        {
+            app.UseMiddleware<DBMiddleware>();
+        }
+    }
+    
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -46,12 +54,7 @@ namespace Lab3
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
-            app.UseRouting();
-
-            app.UseAuthorization();
-
-            app.UseEndpoints(endpoints => { endpoints.MapRazorPages(); });
+            app.UseGlobalCustomMiddleware();
         }
     }
 }
