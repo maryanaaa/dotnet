@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Lab4.Models.Trip>
+
+@{
+    ViewData["Title"] = "Поїздки";
+}
+
+<h1>Поїздки</h1>
+
+<p>
+    <a asp-action="Create">Добавити</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tour)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TripDate)
+            </th>
+            <th>
+                Тривалість
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Discount)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tour.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TripDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tour.Duration)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Discount)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID">Редагувати</a> |
+                <a asp-action="Details" asp-route-id="@item.ID">Деталі</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Видалити</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
