@@ -1,0 +1,43 @@
+﻿@page
+@model Lab5.Pages.Trips.DetailsModel
+
+@{
+    ViewData["Title"] = "Деталі";
+}
+
+<h1>Деталі</h1>
+
+<div>
+    <h4>Поїздка</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Trip.TripDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Trip.TripDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Trip.Discount)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Trip.Discount)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Trip.Customer)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Trip.Customer.ID)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Trip.Tour)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Trip.Tour.ID)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Trip.ID">Редагувати</a> |
+    <a asp-page="./Index">Назад до списку</a>
+</div>

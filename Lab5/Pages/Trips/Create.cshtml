@@ -1,0 +1,47 @@
+﻿@page
+@model Lab5.Pages.Trips.CreateModel
+
+@{
+    ViewData["Title"] = "Добавити";
+}
+
+<h1>Добавити</h1>
+
+<h4>Поїздка</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Trip.CustomerID" class="control-label"></label>
+                <select asp-for="Trip.CustomerID" class ="form-control" asp-items="ViewBag.CustomerID"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Trip.TourID" class="control-label"></label>
+                <select asp-for="Trip.TourID" class ="form-control" asp-items="ViewBag.TourID"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Trip.TripDate" class="control-label"></label>
+                <input asp-for="Trip.TripDate" class="form-control" />
+                <span asp-validation-for="Trip.TripDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Trip.Discount" class="control-label"></label>
+                <input asp-for="Trip.Discount" class="form-control" />
+                <span asp-validation-for="Trip.Discount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Назад до списку</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,54 @@
+﻿@page
+@model Lab5.Pages.Trips.IndexModel
+
+@{
+    ViewData["Title"] = "Поїздки";
+}
+
+<h1>Поїздки</h1>
+
+<p>
+    <a asp-page="Create">Добавити</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Trip[0].TripDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Trip[0].Discount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Trip[0].Customer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Trip[0].Tour)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Trip) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TripDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Discount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tour.Name)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID">Редагувати</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Деталі</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Видалити</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
